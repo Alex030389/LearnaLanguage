@@ -58,23 +58,24 @@ gulp.task('fonts', function () {
 
 gulp.task('styles', function () {
   return gulp.src('src/static/styles/**/*.scss')
-    .pipe(sourcemaps.init()) //dev
+    .pipe(sourcemaps.init()) // ======================================== dev
     .pipe(sass({
       outputStyle: 'expanded'
     }).on("error", notify.onError()))
-    .pipe(rename({
-      suffix: '.min',
-      prefix: ''
-    }))
+    // .pipe(rename({
+    //   suffix: '.min',
+    //   prefix: ''
+    // }))
+    .pipe(concat('styles.min.css')) // вместо rename
     .pipe(autoprefixer(['last 15 versions']))
-    .pipe(cleancss({
+    .pipe(cleancss({ // ================================================ build
       level: {
         1: {
           specialComments: 0
         }
       }
     }))
-    .pipe(sourcemaps.write()) //dev
+    .pipe(sourcemaps.write()) // ======================================== dev
     .pipe(gulp.dest('dist/static/css/'))
     .pipe(browserSync.stream())
 });
@@ -92,23 +93,17 @@ gulp.task('scripts', function () {
       'node_modules/selectric/public/jquery.selectric.min.js',
       'src/static/js/main.js'
     ])
-    .pipe(sourcemaps.init()) // ===============dev
+    .pipe(sourcemaps.init()) // ========================================== dev
 
     // .pipe(concat('scripts.min.js'))
     .pipe(concat('main.js'))
 
-    // .pipe(uglify()) // =====================build
-    .pipe(sourcemaps.write()) // ==============dev
+    // .pipe(uglify()) // ================================================ build
+    .pipe(sourcemaps.write()) // ========================================= dev
     .pipe(gulp.dest('dist/static/js/'))
     .pipe(browserSync.reload({
       stream: true
     }))
-});
-
-gulp.task('watch', function () {
-  gulp.watch('src/**/*.html', gulp.series('html'));
-  gulp.watch('src/static/styles/**/*.scss', gulp.series('styles'));
-  gulp.watch('src/static/js/**/*', gulp.series('scripts'));
 });
 
 gulp.task('img', function () {
@@ -201,10 +196,15 @@ gulp.task('svg:c', function () {
     .pipe(gulp.dest('dist/static/images/sprite/svgc/'));
 });
 
+gulp.task('watch', function () {
+  gulp.watch('src/pages/**/*.html', gulp.series('html'));
+  gulp.watch('src/static/styles/**/*.scss', gulp.series('styles'));
+  gulp.watch('src/static/js/**/*', gulp.series('scripts'));
+});
+
 gulp.task('default', gulp.series(
   'clean',
-  // gulp.parallel(
-  gulp.series(
+  gulp.parallel(
     'html',
     'fonts',
     'img',

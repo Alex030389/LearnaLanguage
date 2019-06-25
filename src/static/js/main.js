@@ -1,20 +1,26 @@
 svg4everybody();
 
-// $(window).resize(function () {
-//   popupSize();
-// });
-// popupSize();
-
-// function popupSize() {
-//   if ($(window).height() < 750) {
-//     $('.mini-course-popup__video').css({
-//       "max-width": "650px",
-//       "padding-bottom": "350px"
-//     });
-//     console.log(123412);
-//   }
-// }
-
+(function () {
+  var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
+  
+  var stickFooter = function () {
+    var FOOTER = document.querySelector('footer');
+    var MAIN = document.querySelector('main');
+    var BODY = document.querySelector('body');
+    var footerHeight = FOOTER.offsetHeight;
+    BODY.style.position = 'relative';
+    MAIN.style.marginBottom = footerHeight + 'px';
+    FOOTER.style.position = 'absolute';
+    FOOTER.style.bottom = '0';
+    FOOTER.style.left = '0';
+    FOOTER.style.width = '100%';
+  };
+  
+  if (isIE11) {
+    stickFooter();
+    window.addEventListener('resize', stickFooter);
+  }
+})();
 
 
 // брейкпоиты разрешения экрана
@@ -123,20 +129,22 @@ $('.overlay').click(function () {
 
 
 // центрирует второстепенное меню в зависимости от колличества пунктов
-var numberMenuItem = $('.header-menu__item');
+var menuItem = $('.header-menu__item');
 
-if (numberMenuItem.length == 6) {
-  $('.header-menu').addClass('header-menu_item_6')
-};
-if (numberMenuItem.length == 5) {
-  $('.header-menu').addClass('header-menu_item_5')
-};
-if (numberMenuItem.length == 4) {
-  $('.header-menu').addClass('header-menu_item_4')
+switch(menuItem.length) {
+  case 6:
+    $('.header-menu').addClass('header-menu_item_6');
+    break;
+  case 5:
+    $('.header-menu').addClass('header-menu_item_5');
+    break;
+  case 4:
+    $('.header-menu').addClass('header-menu_item_4');
+    break;
+  case 3:
+    $('.header-menu').addClass('header-menu_item_3');
+    break;
 }
-if (numberMenuItem.length == 3) {
-  $('.header-menu').addClass('header-menu_item_3')
-};
 
 
 // настройка высоты первого высокого блока
@@ -169,7 +177,8 @@ $('.popup__btn').click(function () {
 });
 
 
-// mini-course-popup__close (на продакшене настройки появления попапа перененсены )
+// mini-course-popup__close (на продакшене настройки появления попапа перененсены в инлайн)
+// так как из-за плагина не срабатывал клик
 $('.mini-course__info').click(function () {
   $('.mini-course-popup-overlay').fadeIn(200);
 });

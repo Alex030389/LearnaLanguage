@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+
+
+
+  <table width="100%" border="1" cellpadding="0" cellspacing="0"
+    summary="Learn weather and natural disaster words in Spanish.">
+    <tr>
+      <td style="font-weight:bold; text-align:center; width:25%;">English</td>
+      <td style="font-weight:bold; text-align:center; width:25%;">Spanish</td>
+      <td style="font-weight:bold; text-align:center; width:25%;">English</td>
+      <td style="font-weight:bold; text-align:center; width:25%;">Spanish</td>
+    </tr>
+    <tr>
+      <td>the cloud</td>
+      <td>la nube</td>
+      <td>it’s windy</td>
+      <td>hace viento</td>
+    </tr>
+    <tr>
+      <td>cloudy</td>
+      <td>nublado</td>
+      <td>the rain</td>
+      <td>la lluvia</td>
+    </tr>
+    <tr>
+      <td>cold</td>
+      <td>frío</td>
+      <td>the snow</td>
+      <td>la nieve</td>
+    </tr>
+    <tr>
+      <td>the flood</td>
+      <td>la inundación de agua</td>
+      <td>the sun</td>
+      <td>el sol</td>
+    </tr>
+    <tr>
+      <td>the fog</td>
+      <td>la neblina</td>
+      <td> it’s sunny</td>
+      <td>hace sol</td>
+    </tr>
+    <tr>
+      <td>foggy</td>
+      <td>nebuloso</td>
+      <td>the temperature</td>
+      <td>la temperatura</td>
+    </tr>
+    <tr>
+      <td>hot</td>
+      <td>calor</td>
+      <td>the thermometer</td>
+      <td>el termómetro</td>
+    </tr>
+    <tr>
+      <td>the humidity</td>
+      <td>la humedad</td>
+      <td>the tornado</td>
+      <td>el tornado</td>
+    </tr>
+    <tr>
+      <td>the hurricane</td>
+      <td>el huracán</td>
+      <td>windy</td>
+      <td>ventoso</td>
+    </tr>
+  </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+  <script>
+    var tdAr = document.querySelectorAll('table td');
+
+    var wordAr1 = [];
+    var wordAr11 = [];
+    var wordAr12 = [];
+
+    var wordAr2 = [];
+    var wordAr21 = [];
+    var wordAr22 = [];
+
+    console.log('<div class="table1-box">');
+    console.log('<table class="table1">');
+
+    for (var i = 0; i < tdAr.length; i += 4) {
+      wordAr1.push(tdAr[i].innerHTML);
+      wordAr1.push(tdAr[i + 1].innerHTML);
+    }
+
+    for (var i = 0; i < wordAr1.length; i += 2) {
+      // document.write("<tr><td>" + wordAr1[i] + "</td><td>" + wordAr1[i + 1] + "</td></tr>");
+      console.log("<tr><td>" + wordAr1[i] + "</td><td>" + wordAr1[i + 1] + "</td></tr>");
+    }
+
+    console.log('</table>');
+    console.log("");
+    console.log('<table class="table1">');
+
+    for (var i = 2; i < tdAr.length; i += 4) {
+      wordAr2.push(tdAr[i].innerHTML);
+      wordAr2.push(tdAr[i + 1].innerHTML);
+    }
+
+    for (var i = 0; i < wordAr2.length; i += 2) {
+      // document.write("<tr><td>" + wordAr2[i] + "</td><td>" + wordAr2[i + 1] + "</td></tr>");
+      console.log("<tr><td>" + wordAr2[i] + "</td><td>" + wordAr2[i + 1] + "</td></tr>");
+    }
+
+    console.log('</table>');
+    console.log('</div>');
+  </script>
+</body>
+
+</html>
