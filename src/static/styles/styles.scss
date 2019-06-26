@@ -1908,21 +1908,21 @@ strong {
     }
   }
 
+  h1 span {
+    position: relative;
+  }
+
 
   &__flag {
     display: none;
     width: 20px;
     height: 20px;
-    margin: 0 10px 0 0;
     position: relative;
-    top: -6px;
+    top: 2px;
+    left: 0;
 
     @media (max-width: $lg) {
-      display: block;
-    }
-
-    @media (max-width: $sm) {
-      top: -2px;
+      display: inline-block;
     }
   }
 
@@ -2843,6 +2843,9 @@ strong {
   color: rgba(23, 56, 87, 0.5) !important;
   font-family: $f-title;
   transition: .3s;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
 
   &:hover {
     color: rgba(23, 56, 87, 1) !important;
@@ -2853,11 +2856,17 @@ strong {
     height: 16px;
     display: inline-block;
     position: relative;
-    top: 4px;
 
     svg {
       fill: #28C3DD;
     }
+  }
+
+  span {
+    display: block;
+    min-width: 100px;
+    width: 100%;
+    // width: 40%;
   }
 
 
@@ -2874,12 +2883,18 @@ strong {
   &_next {
     span {
       margin-right: 4px;
+      text-align: right;
     }
 
     div {
       transform: rotate(90deg);
     }
   }
+}
+
+.lang-btn-center {
+  width: 20px;
+  flex-shrink: 0;
 }
 
 
