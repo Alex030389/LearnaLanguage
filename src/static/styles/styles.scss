@@ -253,13 +253,14 @@ strong {
 
 
 // === social
+
 .social-list {
   @extend %list-reset;
   display: flex;
   margin: 0 -5px -5px 0;
 
   &__item {
-    margin: 0 5px 5px 0;
+    margin: 0 5px 5px 0 !important;
   }
 
   &__link {
@@ -363,7 +364,7 @@ strong {
   }
 }
 
-.like-social-box_bottom {
+.like-social-box.like-social-box_bottom {
   display: none;
   flex-direction: row;
   justify-content: flex-end;
@@ -2423,6 +2424,58 @@ strong {
   }
 }
 
+// table 4 scroll
+.table4-box {
+  margin-bottom: 40px;
+
+  @media (max-width: $lg) {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+
+  @media (max-width: $sm) {
+    margin-bottom: 30px;
+  }
+
+  .table4 {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+    color: rgba(23, 57, 88, 0.7);
+
+    td {
+      padding: 14px 30px 13px 30px;
+      border: 1px solid #D1D7DD;
+
+      &:first-child {
+        // white-space: nowrap;
+
+        @media (max-width: $sm) {
+          // white-space: normal;
+        }
+      }
+
+      &:last-child {
+        width: 100%;
+      }
+    }
+
+    &__row:first-child .table2__col {
+      font-weight: 400;
+    }
+
+    i,
+    em {
+      font-style: normal;
+    }
+
+    b,
+    strong {
+      font-weight: 500;
+      color: $c-main;
+    }
+  }
+}
 // ======================================================== verbs
 .lang .verbs {
   @extend %list-reset;
@@ -3595,27 +3648,27 @@ strong {
       background-color: transparent;
     }
 
-    &:focus {
-      border-color: red;
+    // &:focus {
+    //   border-color: red;
 
-      &::before {
-        background-color: red;
-      }
+    //   &::before {
+    //     background-color: red;
+    //   }
 
-      input::placeholder {
-        background-color: transparent;
-      }
-    }
+    //   input::placeholder {
+    //     background-color: transparent;
+    //   }
+    // }
   }
 
   input {
     padding: 12px 15px 10px;
     color: #173857;
 
-    // &::placeholder {
-    //   color: rgba(23, 56, 87, 0.5);
-    //   font-size: 12px;
-    // }
+    &::placeholder {
+      color: rgba(23, 56, 87, 0.5);
+      font-size: 12px;
+    }
   }
 
   .selectric {
@@ -3695,13 +3748,13 @@ strong {
 }
 
 .selectric-wrapper.selectric-checkout-form__select.selectric-below.selectric-open {
-  .selectric {
-    border-color: red;
+  // .selectric {
+  //   border-color: red;
 
-    &::before {
-      background-color: red;
-    }
-  }
+  //   &::before {
+  //     background-color: red;
+  //   }
+  // }
 
   
 }
@@ -3728,7 +3781,7 @@ strong {
   }
 }
 
-.checkout-card {
+  .checkout-card {
   position: relative;
   padding-top: 40px;
   width: 100%;
@@ -3759,6 +3812,7 @@ strong {
     max-width: 780px;
     width: 100%;
     margin: 0 auto 20px;
+    // font-size: 14px !importan;
   }
 }
 
