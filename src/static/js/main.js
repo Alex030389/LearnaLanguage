@@ -250,8 +250,8 @@ $('.pp-carousel__list').slick({
   speed: 300,
   // autoplay: true,
   autoplaySpeed: 2000,
-  prevArrow: '<button class="gallery__list-arrow gallery__list-arrow_prev" type="button"><svg><use xlink:href="static/images/sprite/svg/symbol/sprite.svg#arrow-pointing-down"></svg></button>',
-  nextArrow: '<button class="gallery__list-arrow gallery__list-arrow_next" type="button"><svg><use xlink:href="static/images/sprite/svg/symbol/sprite.svg#arrow-pointing-down"></button>',
+  prevArrow: '<button class="gallery__list-arrow gallery__list-arrow_prev" type="button"><svg><use xlink:href="/themes/demo/assets/images/sprite/svg/symbol/sprite.svg#arrow-pointing-down"></svg></button>',
+  nextArrow: '<button class="gallery__list-arrow gallery__list-arrow_next" type="button"><svg><use xlink:href="/themes/demo/assets/images/sprite/svg/symbol/sprite.svg#arrow-pointing-down"></svg</button>',
   responsive: [{
       breakpoint: 1150,
       settings: {
@@ -430,6 +430,7 @@ function tableScroll() {
 
 $('.checkout-form__select').selectric();
 $('.checkout-form__select2').selectric();
+$('.mblog-categ-select').selectric();
 
 $(".checkout-form__select").change(function () {
   if ($(".checkout-form__select").val() != '') {
@@ -449,6 +450,18 @@ $(".checkout-form__select2").change(function () {
   }
 });
 
+// let socialComment = $('.mblog__item .blog__social-comments');
+// let blogP = $('.mblog__item .blog__p');
+
+
+// for (let i = 0; i < socialComment.length; i++) {
+//   // console.log(socialComment[i]);
+//   // console.log(blogP[i]);
+//   // socialComment[i].remove().insertAfter(blogP[i]);
+//   $('.mblog__item .blog__social-comments')[i].insertAfter($('.mblog__item .blog__p')[i]);
+// }
+
+// $('.mblog__item .blog__social-comments').insertAfter($('.mblog__item .blog__p'));
 
 
 // =============================== конвертер таблиц

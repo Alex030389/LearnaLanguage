@@ -18,7 +18,10 @@
             <form class="checkout-form" action="#" method="POST" autocomplete="on">
               <h2 class="checkout-form__h2">Billing Address</h2>
               <div class="checkout-form__box">
-                <p><input type="text" name="name-card" placeholder="Name on Card" required></p>
+                <p>
+                  <input type="text" id="name-card" name="name-card" placeholder="Name on Card" required>
+                  <label for="name-card">Name on Card*</label>
+                </p>
                 <p><input type="text" name="state-province" placeholder="State/Province" required></p>
                 <p><input type="text" name="address" placeholder="Address" required></p>
                 <p><select class="checkout-form__select" name="country" required>

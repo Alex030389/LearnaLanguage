@@ -95,8 +95,7 @@ gulp.task('scripts', function () {
     ])
     .pipe(sourcemaps.init()) // ========================================== dev
 
-    // .pipe(concat('scripts.min.js'))
-    .pipe(concat('main.js'))
+    .pipe(concat('scripts.min.js'))
 
     // .pipe(uglify()) // ================================================ build
     .pipe(sourcemaps.write()) // ========================================= dev
