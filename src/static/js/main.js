@@ -2,7 +2,7 @@ svg4everybody();
 
 (function () {
   var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
-  
+
   var stickFooter = function () {
     var FOOTER = document.querySelector('footer');
     var MAIN = document.querySelector('main');
@@ -15,7 +15,7 @@ svg4everybody();
     FOOTER.style.left = '0';
     FOOTER.style.width = '100%';
   };
-  
+
   if (isIE11) {
     stickFooter();
     window.addEventListener('resize', stickFooter);
@@ -131,7 +131,7 @@ $('.overlay').click(function () {
 // центрирует второстепенное меню в зависимости от колличества пунктов
 var menuItem = $('.header-menu__item');
 
-switch(menuItem.length) {
+switch (menuItem.length) {
   case 6:
     $('.header-menu').addClass('header-menu_item_6');
     break;
@@ -449,6 +449,35 @@ $(".checkout-form__select2").change(function () {
     });
   }
 });
+
+
+let checkoutForm = document.querySelector('.checkout-form');
+let checkoutFormBtn = document.querySelector('.checkout-form__btn');
+
+checkoutForm.addEventListener('submit', function (event) { 
+  if(validate()) {
+    checkoutForm.submit();
+  }
+  // validate();
+})
+
+function validate() {
+  event.preventDefault();
+
+  let nameCard = document.querySelector('#name-card');
+  if(!nameCard.value) {
+    nameCard.classList.add('error');
+    return false;
+  }
+
+  // let stateProvince = document.querySelector('#state-province');
+  // let address = document.querySelector('#address');
+  // let city = document.querySelector('#city');
+  // let zipCode = document.querySelector('#zip-code');
+  // let eMail = document.querySelector('#e-mail');
+
+  return true;
+}
 
 // let socialComment = $('.mblog__item .blog__social-comments');
 // let blogP = $('.mblog__item .blog__p');

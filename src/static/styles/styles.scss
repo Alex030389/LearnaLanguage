@@ -3699,13 +3699,10 @@ b {
   p {
     width: calc(50% - 20px);
     margin: 0 10px 24px;
+    position: relative;
 
     &:last-child {
       margin-bottom: 0;
-    }
-
-    @media (max-width: $md) {
-      // width: 47%;
     }
 
     @media (max-width: $sm) {
@@ -3716,6 +3713,19 @@ b {
 
     @media (max-width: $sm) {
       margin-bottom: 20px;
+    }
+  }
+
+  &__security-code-box {
+  
+    span {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 20px;
+      display: block;
+      z-index: 20;
     }
   }
 
@@ -3739,7 +3749,6 @@ b {
       height: 10px;
       background-color: transparent;
     }
-    
   }
 
   input {
@@ -3748,26 +3757,22 @@ b {
 
     &:focus {
       border-color: #53cfe4;
-
-      // input::placeholder {
-      //   background-color: transparent;
-      // }
     }
 
     &::placeholder {
       color: rgba(23, 56, 87, 0.5);
       font-size: 12px;
-    }
+    }    
   }
 
   &__box {
     position: relative;
   }
 
-   label {
+  label {
     position: absolute;
     top: -9px;
-    left: 20px;
+    left: 12px;
     font-size: 12px;
     background-color: #fff;
     padding-left: 4px;
@@ -3776,12 +3781,16 @@ b {
     color: rgba(23, 56, 87, 0.5);
     transform: translateY(0);
     transition: all 0.2s ease-out;
-   }
-   
-   input:placeholder-shown + label {
+  }
+
+  input:placeholder-shown + label {
     opacity: 0;
     transform: translateY(20px);
-   }
+  }
+
+  input:focus + label {
+    color: #53cfe4;
+  }
 
   .selectric {
     background-color: #fff;
@@ -3922,21 +3931,15 @@ b {
   }
 }
 
-.checkout-form__secutity-code-box {
-  position: relative;
+.error {
+  border-color: red !important;
 
-  span {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 32px;
-    height: 20px;
-    display: block;
-    z-index: 20;
+  &::placeholder {
+    color: red !important;
   }
 
-  input {
-    padding-right: 50px !important;
+  & + label {
+    color: red !important;
   }
 }
 
@@ -4106,7 +4109,7 @@ b {
       font-size: 14px;
       padding-top: 2px;
     }
-  }  
+  }
 
   .selectric-group:last-child {
     padding-top: 10px;
@@ -4149,7 +4152,7 @@ b {
           font-size: 14px;
           padding-left: 20px;
           padding-top: 7px;
-          padding-bottom: 4px;          
+          padding-bottom: 4px;
         }
 
         li:first-child {
@@ -4167,8 +4170,9 @@ b {
           &.selected.highlighted {
             background-color: rgba(40, 194, 221, 0.3);
           }
-        }        
+        }
       }
+
       .selectric-group:first-child .selectric-group-label {
         padding: 0px;
         min-height: 10px;

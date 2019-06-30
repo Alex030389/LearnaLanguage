@@ -15,16 +15,23 @@
           <div class="checkout-wrap">
             <h1>Secure & Fast, One Step Checkout <span class="checkout-h2__none-sm">Products Available Immediately after
                 Purchase</span></h1>
-            <form class="checkout-form" action="#" method="POST" autocomplete="on">
+            <form id="product-checkout-form" class="checkout-form" action="#" method="POST" autocomplete="on">
               <h2 class="checkout-form__h2">Billing Address</h2>
               <div class="checkout-form__box">
                 <p>
-                  <input type="text" id="name-card" name="name-card" placeholder="Name on Card" required>
+                  <input type="text" id="name-card" name="name-card" placeholder="Name on Card">
                   <label for="name-card">Name on Card*</label>
                 </p>
-                <p><input type="text" name="state-province" placeholder="State/Province" required></p>
-                <p><input type="text" name="address" placeholder="Address" required></p>
-                <p><select class="checkout-form__select" name="country" required>
+                <p>
+                  <input type="text" id="state-province" name="state-province" placeholder="State/Province">
+                  <label for="state-province">State/Province</label>
+                </p>
+                <p>
+                  <input type="text" id="address" name="address" placeholder="Address">
+                  <label for="address">Address</label>
+                </p>
+                <p>
+                  <select class="checkout-form__select" id="country" name="country">
                     <option disabled selected value="">Country</option>
                     <option label="Afghanistan" value="AF">Afghanistan</option>
                     <option label="Albania" value="AL">Albania</option>
@@ -269,28 +276,47 @@
                     <option label="Yemen" value="YE">Yemen</option>
                     <option label="Zambia" value="ZM">Zambia</option>
                     <option label="Zimbabwe" value="ZW">Zimbabwe</option>
-                  </select></p>
-                <p><input type="text" name="city" placeholder="City" required></p>
-                <p><input type="text" name="zip-code" placeholder="Zip/Portal Code" required></p>
-                <p><input type="text" name="e-mail" placeholder="E-mail Address" required></p>
+                  </select>
+                  <!-- <label for="country">Country</label> -->
+                </p>
+                <p>
+                  <input type="text" id="city" name="city" placeholder="City">
+                  <label for="city">City</label>
+                </p>
+                <p>
+                  <input type="text" id="zip-code" name="zip-code" placeholder="Zip/Portal Code">
+                  <label for="zip-code">Zip/Portal Code</label>
+                </p>
+                <p>
+                  <input type="text" id="e-mail" name="e-mail" placeholder="E-mail Address">
+                  <label for="e-mail">E-mail Address</label>
+                </p>
               </div>
               <h2 class="checkout-form__h2">Billing Details</h2>
               <div class="checkout-form__box">
-                <p><select class="checkout-form__select2" name="card-type" required>
+                <p>
+                  <select class="checkout-form__select2" name="card-type">
                     <option disabled selected value="">Card Type</option>
                     <option value="VISA">Visa</option>
                     <option value="MC">MasterCard</option>
                     <option value="AMEX">American Express</option>
                     <option value="SOLO">Solo</option>
                     <option value="JCB">JCB</option>
-                  </select></p>
-                <p><input type="text" name="card-number" placeholder="Card Number" required rows="6" maxlength="16"></p>
-                <p class="checkout-form__secutity-code-box">
-                  <span>
-                    <img src="static/images/card/icon-card.png" alt="">
-                  </span>
-                  <input type="password" name="security-code" placeholder="Security Code (CVV)" required rows="6" maxlength="4"></p>
-                <p><input type="text" name="expiration-date" placeholder="Expiration Date: 01 / 19" required></p>
+                  </select>
+                </p>
+                <p>
+                  <input type="text" id="card-number" name="card-number" placeholder="Card Number" maxlength="16">
+                  <label for="card-number">Card Number</label>
+                </p>
+                <p class="checkout-form__security-code-box">
+                  <span><img src="static/images/card/icon-card.png" alt="icon-card"></span>
+                  <input type="password" id="security-code" name="security-code" placeholder="Security Code (CVV)" maxlength="4">
+                  <label for="security-code">Security Code (CVV)</label>
+                </p>
+                <p>
+                  <input type="text" id="expiration-date" name="expiration-date" placeholder="Expiration Date: 01 / 19">
+                  <label for="expiration-date">Expiration Date: 01 / 19</label>
+                </p>
               </div>
               <div class="checkout-form__btn-box">
                 <button type="submit" class="checkout-form__btn pp-btn btn btn_main">Pay Now</button>
@@ -299,7 +325,7 @@
 
             <div class="checkout-card lang">
                 <div class="checkout-card__img">
-                  <img src="static/images/card/card.png" alt="">
+                  <img src="static/images/card/card.png" alt="card">
                 </div>
                 <p class="checkout-card__text">Your purchase with LearnALanguage is safe and fast. Your products will be
                   available for immediate download after your payment has been received. The LearnALanguage website is
