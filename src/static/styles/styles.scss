@@ -2298,6 +2298,19 @@ b {
       }
     }
   }
+
+  &_not-header {
+
+    .table2 {
+
+      tr {
+        &:first-child {
+          border-color: rgba(23, 56, 87, 0.2);
+          color: rgba(23,57,88,.7);
+        }
+      }
+    }
+  }
 }
 
 // table 3 scroll
