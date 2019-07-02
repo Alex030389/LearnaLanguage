@@ -203,7 +203,6 @@ $('.js-footer-top__btn').click(function () {
   }, 600);
 });
 
-
 //slick
 $('.blog-list').slick({
   slidesToShow: 4,
@@ -451,33 +450,104 @@ $(".checkout-form__select2").change(function () {
 });
 
 
-let checkoutForm = document.querySelector('.checkout-form');
-let checkoutFormBtn = document.querySelector('.checkout-form__btn');
+// валидация формы
+let formReplyComments = document.querySelector('.reply-form');
+let commentsName1 = document.querySelector('.reply-form input[name="name"]');
+let commentsEmail1 = document.querySelector('.reply-form input[name="e-mail"]');
+let commentsMessage1 = document.querySelector('.reply-form textarea[name="message"]');
 
-checkoutForm.addEventListener('submit', function (event) { 
-  if(validate()) {
-    checkoutForm.submit();
-  }
-  // validate();
-})
 
-function validate() {
+formReplyComments.addEventListener('submit', function (event) { 
   event.preventDefault();
 
-  let nameCard = document.querySelector('#name-card');
-  if(!nameCard.value) {
-    nameCard.classList.add('error');
-    return false;
+  validate1();
+
+});
+
+function validate1() {
+  if (!commentsName1.value) {
+    commentsName1.classList.add('error');
   }
 
-  // let stateProvince = document.querySelector('#state-province');
-  // let address = document.querySelector('#address');
-  // let city = document.querySelector('#city');
-  // let zipCode = document.querySelector('#zip-code');
-  // let eMail = document.querySelector('#e-mail');
+  if (!commentsEmail1.value) {
+    commentsEmail1.classList.add('error');
+  }
 
-  return true;
+  if (!commentsMessage1.value) {
+    commentsMessage1.classList.add('error');
+  }
 }
+
+commentsEmail1.addEventListener('input', function() {
+  commentsEmail1.classList.remove('error');
+});
+
+commentsName1.addEventListener('input', function() {
+  commentsName1.classList.remove('error');
+});
+
+commentsMessage1.addEventListener('input', function() {
+  commentsMessage1.classList.remove('error');
+});
+
+
+let formAddComments = document.querySelector('.form-add-comments');
+let commentsName = document.querySelector('.add-comments input[name="name"]');
+let commentsEmail = document.querySelector('.add-comments input[name="e-mail"]');
+let commentsMessage = document.querySelector('.add-comments textarea[name="message"]');
+
+formAddComments.addEventListener('submit', function (event) { 
+  event.preventDefault();
+
+  validate();
+
+});
+
+function validate() {
+  if (!commentsName.value) {
+    commentsName.classList.add('error');
+  }
+
+  if (!commentsEmail.value) {
+    commentsEmail.classList.add('error');
+  }
+
+  if (!commentsMessage.value) {
+    commentsMessage.classList.add('error');
+  }
+}
+
+commentsEmail.addEventListener('input', function() {
+  commentsEmail.classList.remove('error');
+});
+
+commentsName.addEventListener('input', function() {
+  commentsName.classList.remove('error');
+});
+
+commentsMessage.addEventListener('input', function() {
+  commentsMessage.classList.remove('error');
+});
+
+
+
+
+
+
+// появление тектса в блоге
+$('.blog-article__btn').click(function() {
+  $('.blog-article__text-hidden').fadeIn();
+  $('.blog-article__btn-box').fadeOut();
+})
+
+
+// at-icon-wrapper at-share-btn at-svc-compact
+
+$('at-icon-wrapper').mouseover(function(e) {
+  e.preventDefault();
+})
+
+
 
 // let socialComment = $('.mblog__item .blog__social-comments');
 // let blogP = $('.mblog__item .blog__p');
@@ -491,25 +561,3 @@ function validate() {
 // }
 
 // $('.mblog__item .blog__social-comments').insertAfter($('.mblog__item .blog__p'));
-
-
-// =============================== конвертер таблиц
-// words
-/* $('.lang-words table').replaceWith( $('table').html()
-   .replace(/<tbody/gi, "<ul class='words-list-link'")
-  //  .replace(/<tr/gi, "<div")
-  //  .replace(/<\/tr>/gi, "</div>")
-   .replace(/<td/gi, "<li")
-   .replace(/<\/td>/gi, "</li>")
-   .replace(/<\/tbody/gi, "<\/ul")
-); */
-
-// // phrases
-/* $('.lang-phrases table').replaceWith( $('table').html()
-.replace(/<tbody/gi, "<ul class='phrases-list-link'")
-//  .replace(/<tr/gi, "<div")
-//  .replace(/<\/tr>/gi, "</div>")
- .replace(/<td/gi, "<li")
- .replace(/<\/td>/gi, "</li>")
- .replace(/<\/tbody/gi, "<\/ul")
-); */

@@ -91,7 +91,6 @@ gulp.task('scripts', function () {
       'node_modules/svg4everybody/dist/svg4everybody.min.js',
       'node_modules/slick-carousel/slick/slick.min.js',
       'node_modules/selectric/public/jquery.selectric.min.js',
-      'node_modules/jquery-validation/dist/jquery.validate.min.js',
       'src/static/js/main.js'
     ])
     .pipe(sourcemaps.init()) // ========================================== dev
