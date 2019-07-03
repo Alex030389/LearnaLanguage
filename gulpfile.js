@@ -43,7 +43,7 @@ gulp.task('clean', function () {
 
 gulp.task('html', function () {
   return gulp.src([
-      '!src/pages/modules/*.html',
+      '!src/pages/modules/**/*.html',
       'src/pages/*.html'
     ])
     .pipe(rigger())
@@ -56,25 +56,24 @@ gulp.task('fonts', function () {
     .pipe(gulp.dest('dist/static/fonts/'))
 });
 
-gulp.task('styles', function () {
-  return gulp.src('src/static/styles/**/*.scss')
+gulp.task('css:libs', function () {
+  return gulp.src('src/static/styles/libs.scss')
+    .pipe(sass())
+    .pipe(rename({suffix: '.min'}))
+    .pipe(cleancss())
+    .pipe(gulp.dest('dist/static/css/'))
+    .pipe(browserSync.stream())
+});
+
+gulp.task('css', function () {
+  return gulp.src('src/static/styles/main.scss')
     .pipe(sourcemaps.init()) // ======================================== dev
     .pipe(sass({
       outputStyle: 'expanded'
     }).on("error", notify.onError()))
-    // .pipe(rename({
-    //   suffix: '.min',
-    //   prefix: ''
-    // }))
-    .pipe(concat('styles.min.css')) // вместо rename
+    .pipe(rename({suffix: '.min'}))
     .pipe(autoprefixer(['last 15 versions']))
-    .pipe(cleancss({ // ================================================ build
-      level: {
-        1: {
-          specialComments: 0
-        }
-      }
-    }))
+    // .pipe(cleancss())
     .pipe(sourcemaps.write()) // ======================================== dev
     .pipe(gulp.dest('dist/static/css/'))
     .pipe(browserSync.stream())
@@ -85,18 +84,32 @@ gulp.task('styles', function () {
 //     .pipe(gulp.dest('dist/libs/'))
 // });
 
-gulp.task('scripts', function () {
+gulp.task('js:libs', function () {
   return gulp.src([
       'node_modules/jquery/dist/jquery.min.js',
       'node_modules/svg4everybody/dist/svg4everybody.min.js',
       'node_modules/slick-carousel/slick/slick.min.js',
       'node_modules/selectric/public/jquery.selectric.min.js',
-      'node_modules/jquery-validation/dist/jquery.validate.min.js',
+    ])
+    // .pipe(sourcemaps.init())
+
+    .pipe(concat('libs.min.js'))
+
+    .pipe(uglify())
+    // .pipe(sourcemaps.write())
+    .pipe(gulp.dest('dist/static/js/'))
+    .pipe(browserSync.reload({
+      stream: true
+    }))
+});
+
+gulp.task('js', function () {
+  return gulp.src([
       'src/static/js/main.js'
     ])
     .pipe(sourcemaps.init()) // ========================================== dev
 
-    .pipe(concat('scripts.min.js'))
+    .pipe(concat('main.min.js'))
 
     // .pipe(uglify()) // ================================================ build
     .pipe(sourcemaps.write()) // ========================================= dev
@@ -198,8 +211,8 @@ gulp.task('svg:c', function () {
 
 gulp.task('watch', function () {
   gulp.watch('src/pages/**/*.html', gulp.series('html'));
-  gulp.watch('src/static/styles/**/*.scss', gulp.series('styles'));
-  gulp.watch('src/static/js/**/*', gulp.series('scripts'));
+  gulp.watch('src/static/styles/**/*.scss', gulp.series('css'));
+  gulp.watch('src/static/js/**/*.js', gulp.series('js'));
 });
 
 gulp.task('default', gulp.series(
@@ -210,9 +223,10 @@ gulp.task('default', gulp.series(
     'img',
     'svg',
     'svg:c',
-    'styles',
-    // 'libs',
-    'scripts',
+    'css:libs',
+    'css',
+    'js:libs',
+    'js',
     'browser-sync',
     'watch'
   )));
