@@ -450,114 +450,118 @@ $(".checkout-form__select2").change(function () {
 });
 
 
-// валидация формы
-let formReplyComments = document.querySelector('.reply-form');
-let commentsName1 = document.querySelector('.reply-form input[name="name"]');
-let commentsEmail1 = document.querySelector('.reply-form input[name="e-mail"]');
-let commentsMessage1 = document.querySelector('.reply-form textarea[name="message"]');
+// валидация форм
+var productCheckoutForm = document.querySelector('#product-checkout-form');
 
+try {
+  productCheckoutForm.addEventListener('submit', function (e) {
+    var nameCard = document.querySelector('#name-card'),
+      stateProvince = document.querySelector('#state-province'),
+      address = document.querySelector('#address'),
+      city = document.querySelector('#city'),
+      zipCode = document.querySelector('#zip-code'),
+      eMail = document.querySelector('#e-mail'),
+      cardNumber = document.querySelector('#card-number'),
+      securityCode = document.querySelector('#security-code'),
+      expirationDate = document.querySelector('#expiration-date'),
+      country = document.querySelector('#country'),
+      cardType = document.querySelector('#card-type');
 
-formReplyComments.addEventListener('submit', function (event) { 
-  event.preventDefault();
+    var productCheckoutFormFields = [
+      nameCard,
+      stateProvince,
+      address,
+      city,
+      zipCode,
+      eMail,
+      cardNumber,
+      securityCode,
+      expirationDate
+    ];
 
-  validate1();
+    var productCheckoutFormSelect = [
+      country,
+      cardType
+    ];
 
-});
+    for (var i = 0; i < productCheckoutFormFields.length; i++) {
+      if (!productCheckoutFormFields[i].value) {
+        e.preventDefault();
+        productCheckoutFormFields[i].classList.add('error');
+        productCheckoutFormFields[i].addEventListener('input', function (event) {
+          event.target.classList.remove('error');
+        })
+      }
+    };
 
-function validate1() {
-  if (!commentsName1.value) {
-    commentsName1.classList.add('error');
-  }
+    for (var y = 0; y < productCheckoutFormSelect.length; y++) {
+      if (productCheckoutFormSelect[y].value == '') {
+        e.preventDefault();
 
-  if (!commentsEmail1.value) {
-    commentsEmail1.classList.add('error');
-  }
+        var checkoutFormSelectClass = '.' + productCheckoutFormSelect[y].parentNode.parentNode.parentNode.classList[0];
+        var selectric = document.querySelector(checkoutFormSelectClass + " " + ".selectric");
 
-  if (!commentsMessage1.value) {
-    commentsMessage1.classList.add('error');
-  }
-}
-
-commentsEmail1.addEventListener('input', function() {
-  commentsEmail1.classList.remove('error');
-});
-
-commentsName1.addEventListener('input', function() {
-  commentsName1.classList.remove('error');
-});
-
-commentsMessage1.addEventListener('input', function() {
-  commentsMessage1.classList.remove('error');
-});
-
-
-let formAddComments = document.querySelector('.form-add-comments');
-let commentsName = document.querySelector('.add-comments input[name="name"]');
-let commentsEmail = document.querySelector('.add-comments input[name="e-mail"]');
-let commentsMessage = document.querySelector('.add-comments textarea[name="message"]');
-
-formAddComments.addEventListener('submit', function (event) { 
-  event.preventDefault();
-
-  validate();
-
-});
-
-function validate() {
-  if (!commentsName.value) {
-    commentsName.classList.add('error');
-  }
-
-  if (!commentsEmail.value) {
-    commentsEmail.classList.add('error');
-  }
-
-  if (!commentsMessage.value) {
-    commentsMessage.classList.add('error');
-  }
-}
-
-commentsEmail.addEventListener('input', function() {
-  commentsEmail.classList.remove('error');
-});
-
-commentsName.addEventListener('input', function() {
-  commentsName.classList.remove('error');
-});
-
-commentsMessage.addEventListener('input', function() {
-  commentsMessage.classList.remove('error');
-});
+        selectric.classList.add('error');
+        productCheckoutFormSelect[y].addEventListener('change', function () {
+          productCheckoutFormSelect[y].classList.remove('error');
+        })
+      }
+    };
+  });
+} catch (err) {}
 
 
 
 
+var productCheckoutForm1 = document.querySelector('#product-checkout-form1');
+
+try {
+  productCheckoutForm1.addEventListener('submit', function (e) {
+    var name1 = document.querySelector('#name1'),
+      eMail1 = document.querySelector('#e-mail1'),
+      message1 = document.querySelector('#message1');
+
+    var productCheckoutFormFields = [
+      name1,
+      eMail1,
+      message1
+    ];
+
+    for (var i = 0; i < productCheckoutFormFields.length; i++) {
+      if (!productCheckoutFormFields[i].value) {
+        e.preventDefault();
+        productCheckoutFormFields[i].classList.add('error');
+        productCheckoutFormFields[i].addEventListener('input', function (event) {
+          event.target.classList.remove('error');
+        })
+      }
+    };
+  });
+} catch (err) {}
 
 
-// появление тектса в блоге
-$('.blog-article__btn').click(function() {
-  $('.blog-article__text-hidden').fadeIn();
-  $('.blog-article__btn-box').fadeOut();
-})
+var productCheckoutForm2 = document.querySelector('#product-checkout-form2');
 
+try {
+  productCheckoutForm2.addEventListener('submit', function (e) {
+    var name1 = document.querySelector('#name2'),
+      eMail1 = document.querySelector('#e-mail2'),
+      message1 = document.querySelector('#message2');
 
-// at-icon-wrapper at-share-btn at-svc-compact
+    var productCheckoutFormFields = [
+      name1,
+      eMail1,
+      message1
+    ];
 
-$('at-icon-wrapper').mouseover(function(e) {
-  e.preventDefault();
-})
-
-
-
-// let socialComment = $('.mblog__item .blog__social-comments');
-// let blogP = $('.mblog__item .blog__p');
-
-
-// for (let i = 0; i < socialComment.length; i++) {
-//   // console.log(socialComment[i]);
-//   // console.log(blogP[i]);
-//   // socialComment[i].remove().insertAfter(blogP[i]);
-//   $('.mblog__item .blog__social-comments')[i].insertAfter($('.mblog__item .blog__p')[i]);
-// }
-
-// $('.mblog__item .blog__social-comments').insertAfter($('.mblog__item .blog__p'));
+    for (var i = 0; i < productCheckoutFormFields.length; i++) {
+      if (!productCheckoutFormFields[i].value) {
+        e.preventDefault();
+        productCheckoutFormFields[i].classList.add('error');
+        productCheckoutFormFields[i].addEventListener('input', function (event) {
+          event.target.classList.remove('error');
+        })
+      }
+    };
+  });
+} catch (err) {}
