@@ -8,6 +8,11 @@
 
   <!-- ============================================================ main -->
   <main>
+
+    <div class="blog-article__img">
+      <img src="static/images/blog/how-to-turn-motivation.jpg" alt="">
+    </div>
+
     <div class="wrap blog-article-wrap">
 
       <div class="like-social-box like-social-box_top like-social-box_top-35">
@@ -15,34 +20,23 @@
           <img src="static/images/test-like.png" alt="">
         </div>
 
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
         <div class="addthis_vertical">
+          <!-- Go to www.addthis.com/dashboard to customize your tools -->
           <div class="addthis_inline_share_toolbox"></div>
         </div>
 
-        <div class="blog__comments">
-          <span class="blog__comments-icon">
-            <img src="static/images/blog-social/chat.svg" alt="chat">
-          </span>
-          <a class="blog__comments-link" href="#">
-            <span class="blog__comments-count">8</span>
-            comments
-          </a>
-        </div>
+        //= modules/_blog__comments.html
+
       </div>
 
       <div class="inner">
         <div class="blog-article__content">
           <h1>Fundamental Financial Methods For University Grads</h1>
-          
-          <div class="blog__comments blog__comments_top">
-            <span class="blog__comments-icon">
-              <img src="static/images/blog-social/chat.svg" alt="chat">
-            </span>
-            <a class="blog__comments-link" href="#">
-              <span class="blog__comments-count">8</span>
-              comments
-            </a>
+
+          <div class="blog-article__comments-after-title">
+
+            //= modules/_blog__comments.html
+
           </div>
 
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias molestias veritatis quos repellendus
@@ -115,14 +109,7 @@
 
         </div>
 
-        <ul class="blog__tag-list">
-          <li class="blog__tag-item">
-            <a class="blog__tag-link" href="#">#Learn Spanish Lesson – Facebook Fiesta Friday</a>
-          </li>
-          <li class="blog__tag-item">
-            <a class="blog__tag-link" href="#">#Spanish</a>
-          </li>
-        </ul>
+        //= modules/_blog__tag-list.html
 
         //= modules/_lang-btn-box.html
 
@@ -180,6 +167,7 @@
                             provident
                             iste. Facilis aspernatur maxime cupiditate?</p>
                         </div>
+                        <!-- когда появляется форма комментария, то кнопка Reply пропадает -->
                         <!-- <div class="comments__act">
                           <a href="#" class="comments__reply">Reply</a>
                         </div> -->
@@ -198,7 +186,8 @@
                               <label for="e-mail1">E-mail*</label>
                             </p>
                             <p>
-                              <textarea name="message1" id="message1" placeholder="Type here to reply to Gift..."></textarea>
+                              <textarea name="message1" id="message1"
+                                placeholder="Type here to reply to Gift..."></textarea>
                             </p>
                           </div>
                           <div class="checkout-form__btn-box">
@@ -245,8 +234,8 @@
               </li>
 
             </ul>
-
           </div>
+
           <div class="add-comments" id="addComment">
             <span class="add-comments__header">Add comments</span>
             <div class="comments__post-box checkout-wrap">
@@ -272,8 +261,9 @@
                 </div>
               </form>
             </div>
-
           </div>
+
+          <!-- comments-box end -->
         </div>
 
         <!-- inner end -->

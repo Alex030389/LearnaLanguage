@@ -121,8 +121,8 @@ gulp.task('js', function () {
 
 gulp.task('img', function () {
   return gulp.src([
-      '!src/static/images/sprite/**/*',
-      'src/static/images/**/*.{png,jpg,svg}'
+    'src/static/images/**/*.{png,jpg,gif,svg}',
+    '!src/static/images/sprite/*'
     ])
 
     // .pipe(imagemin([
@@ -217,16 +217,16 @@ gulp.task('watch', function () {
 
 gulp.task('default', gulp.series(
   'clean',
+  'svg',
+  'svg:c',
+  'img',
   gulp.parallel(
     'html',
     'fonts',
-    'img',
-    'svg',
-    'svg:c',
     'css:libs',
     'css',
     'js:libs',
     'js',
-    'browser-sync',
-    'watch'
+    'watch',
+    'browser-sync'
   )));
