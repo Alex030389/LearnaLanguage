@@ -89,7 +89,7 @@ gulp.task('js:libs', function () {
       'node_modules/jquery/dist/jquery.min.js',
       'node_modules/svg4everybody/dist/svg4everybody.min.js',
       'node_modules/slick-carousel/slick/slick.min.js',
-      'node_modules/selectric/public/jquery.selectric.min.js',
+      'node_modules/selectric/public/jquery.selectric.min.js'
     ])
     // .pipe(sourcemaps.init())
 

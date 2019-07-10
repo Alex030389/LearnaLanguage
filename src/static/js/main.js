@@ -22,6 +22,16 @@ svg4everybody();
   }
 })();
 
+var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
+if (isIE11) {
+
+  var checkoutLabel = document.querySelectorAll('.checkout-form__box label');
+  for (var i = 0; i < checkoutLabel.length; i++) {
+    checkoutLabel[i].style.display = 'none';
+  }
+
+  document.querySelector('.angle').style.display = 'none';
+}
 
 // брейкпоиты разрешения экрана
 var sizeXl = 1200,
