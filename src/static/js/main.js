@@ -22,16 +22,19 @@ svg4everybody();
   }
 })();
 
-var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
-if (isIE11) {
+try {
+  var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
+  if (isIE11) {
 
-  var checkoutLabel = document.querySelectorAll('.checkout-form__box label');
-  for (var i = 0; i < checkoutLabel.length; i++) {
-    checkoutLabel[i].style.display = 'none';
+    var checkoutLabel = document.querySelectorAll('.checkout-form__box label');
+    for (var i = 0; i < checkoutLabel.length; i++) {
+      checkoutLabel[i].style.display = 'none';
+    }
+
+    document.querySelector('.angle').style.display = 'none';
   }
 
-  document.querySelector('.angle').style.display = 'none';
-}
+} catch (err) {}
 
 // брейкпоиты разрешения экрана
 var sizeXl = 1200,
@@ -41,7 +44,6 @@ var sizeXl = 1200,
 
 // высота скролла при которой появляется меню на главной странице
 var scroll = 80;
-
 
 // по скроллу задает главному меню position: fixed
 $(document).scroll(function () {
@@ -99,7 +101,6 @@ $('.header-search-btn').click(function () {
     $('.js-header-logo').removeClass('hidden');
     $('.js-header-form-box').removeClass('visible-flex');
   };
-
 });
 
 
@@ -445,9 +446,11 @@ $(".checkout-form__select").change(function () {
   if ($(".checkout-form__select").val() != '') {
     $('.selectric-checkout-form__select.selectric-below .label').css({
       'color': '#173857',
-      'font-size': '14px'
+      'font-size': '14px',
+      'border-color': 'grey !important'
     });
   }
+  $('.checkout-form-select1 .selectric').removeClass('error');
 });
 
 $(".checkout-form__select2").change(function () {
@@ -457,11 +460,12 @@ $(".checkout-form__select2").change(function () {
       'font-size': '14px'
     });
   }
+  $('.checkout-form-select2 .selectric').removeClass('error');
 });
 
 
 // валидация форм
-var productCheckoutForm = document.querySelector('#product-checkout-form');
+var productCheckoutForm = document.querySelector('.product-checkout-form');
 
 try {
   productCheckoutForm.addEventListener('submit', function (e) {
@@ -477,7 +481,7 @@ try {
       country = document.querySelector('#country'),
       cardType = document.querySelector('#card-type');
 
-    var productCheckoutFormFields = [
+    var checkoutFormFields = [
       nameCard,
       stateProvince,
       address,
@@ -494,11 +498,11 @@ try {
       cardType
     ];
 
-    for (var i = 0; i < productCheckoutFormFields.length; i++) {
-      if (!productCheckoutFormFields[i].value) {
+    for (var i = 0; i < checkoutFormFields.length; i++) {
+      if (!checkoutFormFields[i].value) {
         e.preventDefault();
-        productCheckoutFormFields[i].classList.add('error');
-        productCheckoutFormFields[i].addEventListener('input', function (event) {
+        checkoutFormFields[i].classList.add('error');
+        checkoutFormFields[i].addEventListener('input', function (event) {
           event.target.classList.remove('error');
         })
       }
@@ -521,27 +525,25 @@ try {
 } catch (err) {}
 
 
-
-
-var productCheckoutForm1 = document.querySelector('#product-checkout-form1');
+var checkoutForm1 = document.querySelector('.blog-checkout-form-2');
 
 try {
-  productCheckoutForm1.addEventListener('submit', function (e) {
+  checkoutForm1.addEventListener('submit', function (e) {
     var name1 = document.querySelector('#name1'),
       eMail1 = document.querySelector('#e-mail1'),
       message1 = document.querySelector('#message1');
 
-    var productCheckoutFormFields = [
+    var checkoutFormFields = [
       name1,
       eMail1,
       message1
     ];
 
-    for (var i = 0; i < productCheckoutFormFields.length; i++) {
-      if (!productCheckoutFormFields[i].value) {
+    for (var i = 0; i < checkoutFormFields.length; i++) {
+      if (!checkoutFormFields[i].value) {
         e.preventDefault();
-        productCheckoutFormFields[i].classList.add('error');
-        productCheckoutFormFields[i].addEventListener('input', function (event) {
+        checkoutFormFields[i].classList.add('error');
+        checkoutFormFields[i].addEventListener('input', function (event) {
           event.target.classList.remove('error');
         })
       }
@@ -550,25 +552,25 @@ try {
 } catch (err) {}
 
 
-var productCheckoutForm2 = document.querySelector('#product-checkout-form2');
+var blogCheckoutForm = document.querySelector('.blog-checkout-form');
 
 try {
-  productCheckoutForm2.addEventListener('submit', function (e) {
+  blogCheckoutForm.addEventListener('submit', function (e) {
     var name1 = document.querySelector('#name2'),
       eMail1 = document.querySelector('#e-mail2'),
       message1 = document.querySelector('#message2');
 
-    var productCheckoutFormFields = [
+    var checkoutFormFields = [
       name1,
       eMail1,
       message1
     ];
 
-    for (var i = 0; i < productCheckoutFormFields.length; i++) {
-      if (!productCheckoutFormFields[i].value) {
+    for (var i = 0; i < checkoutFormFields.length; i++) {
+      if (!checkoutFormFields[i].value) {
         e.preventDefault();
-        productCheckoutFormFields[i].classList.add('error');
-        productCheckoutFormFields[i].addEventListener('input', function (event) {
+        checkoutFormFields[i].classList.add('error');
+        checkoutFormFields[i].addEventListener('input', function (event) {
           event.target.classList.remove('error');
         })
       }

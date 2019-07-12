@@ -67,22 +67,17 @@ gulp.task('css:libs', function () {
 
 gulp.task('css', function () {
   return gulp.src('src/static/styles/main.scss')
-    .pipe(sourcemaps.init()) // ======================================== dev
+    //.pipe(sourcemaps.init()) // ======================================== dev
     .pipe(sass({
       outputStyle: 'expanded'
     }).on("error", notify.onError()))
     .pipe(rename({suffix: '.min'}))
     .pipe(autoprefixer(['last 15 versions']))
-    // .pipe(cleancss())
-    .pipe(sourcemaps.write()) // ======================================== dev
+    .pipe(cleancss())
+    //.pipe(sourcemaps.write()) // ======================================== dev
     .pipe(gulp.dest('dist/static/css/'))
     .pipe(browserSync.stream())
 });
-
-// gulp.task('libs', function () {
-//   return gulp.src('src/libs/**/*')
-//     .pipe(gulp.dest('dist/libs/'))
-// });
 
 gulp.task('js:libs', function () {
   return gulp.src([
@@ -91,12 +86,8 @@ gulp.task('js:libs', function () {
       'node_modules/slick-carousel/slick/slick.min.js',
       'node_modules/selectric/public/jquery.selectric.min.js'
     ])
-    // .pipe(sourcemaps.init())
-
     .pipe(concat('libs.min.js'))
-
     .pipe(uglify())
-    // .pipe(sourcemaps.write())
     .pipe(gulp.dest('dist/static/js/'))
     .pipe(browserSync.reload({
       stream: true
@@ -107,12 +98,10 @@ gulp.task('js', function () {
   return gulp.src([
       'src/static/js/main.js'
     ])
-    .pipe(sourcemaps.init()) // ========================================== dev
-
+    //.pipe(sourcemaps.init()) // ========================================== dev
     .pipe(concat('main.min.js'))
-
-    // .pipe(uglify()) // ================================================ build
-    .pipe(sourcemaps.write()) // ========================================= dev
+    .pipe(uglify()) // ================================================ build
+    //.pipe(sourcemaps.write()) // ========================================= dev
     .pipe(gulp.dest('dist/static/js/'))
     .pipe(browserSync.reload({
       stream: true
@@ -125,21 +114,21 @@ gulp.task('img', function () {
     '!src/static/images/sprite/*'
     ])
 
-    // .pipe(imagemin([
-    //   imagemin.gifsicle({interlaced: true}),
-    //   imagemin.jpegtran({progressive: true}),
-    //   imageminJpegRecompress({
-    //     loops: 5,
-    //     min: 70,
-    //     max: 75,
-    //     quality: 'medium'
-    //   }),
-    //   imagemin.optipng({optimizationLevel: 3}),
-    //   pngquant({speed: 5}),
-    //   imagemin.svgo()
-    // ], {
-    //   verbose: true
-    // }))
+    .pipe(imagemin([
+      imagemin.gifsicle({interlaced: true}),
+      imagemin.jpegtran({progressive: true}),
+      imageminJpegRecompress({
+        loops: 5,
+        min: 70,
+        max: 75,
+        quality: 'medium'
+      }),
+      imagemin.optipng({optimizationLevel: 3}),
+      pngquant({speed: 5}),
+      imagemin.svgo()
+    ], {
+      verbose: true
+    }))
 
     .pipe(gulp.dest('dist/static/images/'));
 });
@@ -180,24 +169,24 @@ gulp.task('svg', function () {
 gulp.task('svg:c', function () {
   return gulp.src('src/static/images/sprite/svgc/**/*.svg')
     // minify svg
-    .pipe(svgmin({
-      js2svg: {
-        pretty: true
-      }
-    }))
+    // .pipe(svgmin({
+    //   js2svg: {
+    //     pretty: true
+    //   }
+    // }))
     // remove all fill, style and stroke declarations in out shapes
-    .pipe(cheerio({
-      run: function ($) {
-        // $('[fill]').removeAttr('fill');
-        // $('[stroke]').removeAttr('stroke');
-        // $('[style]').removeAttr('style');
-      },
-      parserOptions: {
-        xmlMode: true
-      }
-    }))
+    // .pipe(cheerio({
+    //   run: function ($) {
+    //     $('[fill]').removeAttr('fill');
+    //     $('[stroke]').removeAttr('stroke');
+    //     $('[style]').removeAttr('style');
+    //   },
+    //   parserOptions: {
+    //     xmlMode: true
+    //   }
+    // }))
     // cheerio plugin create unnecessary string '&gt;', so replace it.
-    .pipe(replace('&gt;', '>'))
+    // .pipe(replace('&gt;', '>'))
     // build svg sprite
     .pipe(svgSprite({
       mode: {

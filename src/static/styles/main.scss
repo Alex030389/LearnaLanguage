@@ -1390,6 +1390,11 @@ figure {
       text-decoration: underline;
       transform: translateX(-10px);
       text-decoration-color: rgba(255, 255, 255, 1);
+      
+      @media (max-width: $lg) {
+        transform: translateX(0);
+        text-decoration-color: rgba(255, 255, 255, 0.5);
+      }
     }
   }
 }
@@ -1536,6 +1541,7 @@ figure {
   height: 100%;
   background-color: #fff;
   z-index: 1000;
+  overflow-y: auto;
 }
 
 .popup {
@@ -1588,6 +1594,7 @@ figure {
 
 .popup__btn-box {
   text-align: center;
+  margin-bottom: 30px;
 }
 
 .popup__btn {
@@ -1662,7 +1669,7 @@ figure {
 
     &_Arabic {
       width: 310px;
-      height: 165px;
+      height: 170px;
 
       @media (max-width: $xl) {
         height: 175px;
@@ -1679,11 +1686,11 @@ figure {
 
     &_Chinese {
       width: 280px;
-      height: 230px;
+      height: 240px;
 
       @media (max-width: $xl) {
         width: 280px;
-        height: 220px;
+        height: 240px;
       }
 
       .lang__map {
@@ -1715,7 +1722,7 @@ figure {
 
     &_Dutch {
       width: 190px;
-      height: 220px;
+      height: 200px;
 
       @media (max-width: $xl) {
         height: 190px;
@@ -1723,9 +1730,11 @@ figure {
 
       .lang__map {
         width: 240px;
+        top: -65px;
 
         @media (max-width: $xl) {
           width: 180px;
+          top: -40px;
         }
       }
     }
@@ -1847,7 +1856,7 @@ figure {
       height: 220px;
 
       @media (max-width: $xl) {
-        height: 250px;
+        height: 200px;
       }
 
       .lang__map {
@@ -1856,6 +1865,7 @@ figure {
         @media (max-width: $xl) {
           width: 200px;
           left: -20px;
+          top: -50px;
         }
       }
     }
@@ -1894,20 +1904,22 @@ figure {
 
     &_Norwegian {
       width: 180px;
-      height: 200px;
+      height: 220px;
 
       @media (max-width: $xl) {
-        height: 210px;
-      }
+        height: 150px;
+      } 
 
       .lang__map {
         width: 250px;
         top: -95px;
-        right: -75px;
+        right: -50px;
 
         @media (max-width: $xl) {
           width: 180px;
           right: 20px;
+          top: -70;
+          right: -30px;
         }
       }
     }
@@ -1982,7 +1994,7 @@ figure {
 
     &_Turkish {
       width: 310px;
-      height: 130px;
+      height: 150px;
 
       @media (max-width: $xl) {
         height: 160px;
@@ -1990,9 +2002,11 @@ figure {
 
       .lang__map {
         width: 350px;
+        top: -35px;
 
         @media (max-width: $xl) {
           width: 300px;
+          top: -10px;
         }
       }
     }
@@ -2531,14 +2545,15 @@ figure {
   .table4 {
     border-collapse: collapse;
     width: 100%;
-    min-width: 750px;
+    // min-width: 700px;
     font-size: 14px;
     color: rgba(23, 57, 88, 0.7);
-    table-layout: fixed;
+    // table-layout: fixed;
 
     td {
       padding: 14px 30px 13px 30px;
       vertical-align: top;
+      min-width: 160px;
     }
 
     &__td_border {
@@ -2560,14 +2575,7 @@ figure {
       background-color: #F3F5F6;
       border-bottom: 1px solid #D1D7DD;
     }
-
-    tr:last-child {
-
-      @media (max-width: 765px) {
-        border-bottom: none;
-      }
-    }
-
+ 
     i,
     em {
       font-style: normal;
@@ -3260,7 +3268,6 @@ figure {
   .language__item {
 
     &:hover .language__content {
-      // top: 0;
 
       @media (max-width: $sm) {
         transform: translateY(0);
@@ -4106,14 +4113,14 @@ figure {
   }
 }
 
-.selectric-wrapper.selectric-checkout-form__select.selectric-below.selectric-open,
-.selectric-wrapper.selectric-checkout-form__select2.selectric-below.selectric-open {
+.selectric-wrapper.selectric-checkout-form__select.selectric-open,
+.selectric-wrapper.selectric-checkout-form__select2.selectric-open {
   .selectric {
     border-color: #53cfe4;
   }
 }
 
-.selectric-wrapper.selectric-checkout-form__select.selectric-below.selectric-open {
+.selectric-wrapper.selectric-checkout-form__select.selectric-open {
   z-index: 50;
 }
 
