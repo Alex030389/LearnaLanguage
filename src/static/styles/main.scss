@@ -1305,6 +1305,10 @@ figure {
   }
 }
 
+.language__img {
+  cursor: pointer;
+}
+
 .language__content {
   @extend %trans;
   position: absolute;
@@ -4512,6 +4516,7 @@ figure {
     position: absolute;
     top: 0;
     left: -130px;
+    z-index: 10;
   }
 }
 

@@ -114,21 +114,21 @@ gulp.task('img', function () {
     '!src/static/images/sprite/*'
     ])
 
-    .pipe(imagemin([
-      imagemin.gifsicle({interlaced: true}),
-      imagemin.jpegtran({progressive: true}),
-      imageminJpegRecompress({
-        loops: 5,
-        min: 70,
-        max: 75,
-        quality: 'medium'
-      }),
-      imagemin.optipng({optimizationLevel: 3}),
-      pngquant({speed: 5}),
-      imagemin.svgo()
-    ], {
-      verbose: true
-    }))
+    // .pipe(imagemin([
+    //   imagemin.gifsicle({interlaced: true}),
+    //   imagemin.jpegtran({progressive: true}),
+    //   imageminJpegRecompress({
+    //     loops: 5,
+    //     min: 70,
+    //     max: 75,
+    //     quality: 'medium'
+    //   }),
+    //   imagemin.optipng({optimizationLevel: 3}),
+    //   pngquant({speed: 5}),
+    //   imagemin.svgo()
+    // ], {
+    //   verbose: true
+    // }))
 
     .pipe(gulp.dest('dist/static/images/'));
 });

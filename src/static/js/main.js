@@ -36,6 +36,14 @@ try {
 
 } catch (err) {}
 
+// Перейти по ссылке, кликнув по картинке
+try {
+  document.querySelector('.language').addEventListener('click', function(e) {
+    var languageTitleLink = e.target.parentNode.querySelector('.language__title-h3-link');
+    languageTitleLink.click();
+  });
+} catch (err){}
+
 // брейкпоиты разрешения экрана
 var sizeXl = 1200,
   sizeLg = 992,
@@ -577,3 +585,18 @@ try {
     };
   });
 } catch (err) {}
+
+// Поменять атрибут href внутри статьи, чтобы сработал плавный переход
+// var blogArt = document.querySelector('.blog-article-wrap .blog__comments-link');
+if(document.querySelector('.blog-article-wrap .blog__comments-link')) {
+  $('.blog__comments-link').attr('href', '#comments');
+};
+
+// Плавный скролл по якорным ссылкам
+var $page = $('html, body');
+$('a[href*="#"]').click(function() {
+  $page.animate({
+    scrollTop: $($.attr(this, 'href')).offset().top - 115
+  }, 400);
+  return false;
+});
