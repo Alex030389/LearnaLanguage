@@ -1,5 +1,7 @@
 svg4everybody();
 
+// if(document.querySelector('.wrap'))
+
 (function () {
   var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
 
@@ -38,11 +40,11 @@ try {
 
 // Перейти по ссылке, кликнув по картинке
 try {
-  document.querySelector('.language').addEventListener('click', function(e) {
+  document.querySelector('.language').addEventListener('click', function (e) {
     var languageTitleLink = e.target.parentNode.querySelector('.language__title-h3-link');
     languageTitleLink.click();
   });
-} catch (err){}
+} catch (err) {}
 
 // брейкпоиты разрешения экрана
 var sizeXl = 1200,
@@ -167,14 +169,17 @@ switch (menuItem.length) {
 
 
 // настройка высоты первого высокого блока
+window.onload = function () {
+  langHight();
+};
+
+// setTimeout(function () {
+//   langHight();
+// }, 250);
+
 $(window).resize(function () {
   langHight();
 });
-
-
-setTimeout(function () {
-  langHight();
-}, 200);
 
 function langHight() {
   var languageItemHeight = Math.floor($('.language__item:nth-child(2)').outerHeight());
@@ -182,7 +187,6 @@ function langHight() {
   var languageHeight = parseFloat(languageItemHeight) * 2 + parseFloat(languageItemMarginBottom);
   $('.language__item_height').css('height', languageHeight + 'px');
 };
-
 
 // popup
 $('.banner-content__btn').click(function () {
@@ -346,26 +350,25 @@ $(".pp-carousel__list").on("afterChange", function (event, slick, currentSlide) 
   };
 });
 
-
-
 // таблицы
-
 // наложение тени на фиксированную колонку таблицы
+
 $(".table3").clone(true).appendTo('#table3-box').addClass('table-clone');
 
+checkTableScroll();
 
-try {
-  var div = document.getElementById('table3-wrap');
+$(window).resize(function () {
+  checkTableScroll();
+});
 
-  tableScroll();
-
-  $(window).resize(function () {
+function checkTableScroll() {
+  if (document.getElementById('table3-wrap')) {
     tableScroll();
-  });
-} catch (err) {}
+  }
+}
 
-function tableScroll() {
-
+function tableScroll() {  
+  var div = document.getElementById('table3-wrap');
   if (div.scrollWidth > div.clientWidth) {
     $('.table-clone td:first-child').addClass('fixed-td_active');
   } else {
@@ -588,13 +591,13 @@ try {
 
 // Поменять атрибут href внутри статьи, чтобы сработал плавный переход
 // var blogArt = document.querySelector('.blog-article-wrap .blog__comments-link');
-if(document.querySelector('.blog-article-wrap .blog__comments-link')) {
+if (document.querySelector('.blog-article-wrap .blog__comments-link')) {
   $('.blog__comments-link').attr('href', '#comments');
 };
 
 // Плавный скролл по якорным ссылкам
 var $page = $('html, body');
-$('a[href*="#"]').click(function() {
+$('a[href*="#"]').click(function () {
   $page.animate({
     scrollTop: $($.attr(this, 'href')).offset().top - 115
   }, 400);

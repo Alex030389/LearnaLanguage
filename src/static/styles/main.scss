@@ -1248,6 +1248,10 @@ figure {
   overflow: hidden;
   position: relative;
 
+  img {
+    width: 100%;
+  }
+
   &:hover {
 
     .language__content {
@@ -1394,7 +1398,7 @@ figure {
       text-decoration: underline;
       transform: translateX(-10px);
       text-decoration-color: rgba(255, 255, 255, 1);
-      
+
       @media (max-width: $lg) {
         transform: translateX(0);
         text-decoration-color: rgba(255, 255, 255, 0.5);
@@ -1912,7 +1916,7 @@ figure {
 
       @media (max-width: $xl) {
         height: 150px;
-      } 
+      }
 
       .lang__map {
         width: 250px;
@@ -2579,7 +2583,7 @@ figure {
       background-color: #F3F5F6;
       border-bottom: 1px solid #D1D7DD;
     }
- 
+
     i,
     em {
       font-style: normal;
@@ -4983,6 +4987,19 @@ figure {
 
   box-shadow: none !important;
 
+  .loading {
+
+    img {
+      display: block !important;
+      width: 100px !important;
+      margin: 0 auto 30px !important;
+    }
+
+    div {
+      text-align: center;
+    }
+  }
+
   .section {
     padding: 0 !important;
   }
@@ -5047,6 +5064,10 @@ figure {
   .facebook.login {
     width: 280px !important;
     z-index: 700 !important;
+
+    div {
+      white-space: nowrap !important;
+    }
   }
 }
 
@@ -5321,6 +5342,25 @@ figure {
         font-weight: 500;
         color: $c-main;
       }
+    }
+  }
+}
+
+.ads {
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  &_mt_10 {
+    margin-top: 10px;
+  }
+
+  &_mb_10 {
+    margin-bottom: 10px;
+  }
+
+  &__home-top {
+    @media (max-width: $md) {
+      display: none;
     }
   }
 }
